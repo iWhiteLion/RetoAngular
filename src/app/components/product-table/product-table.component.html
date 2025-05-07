@@ -1,0 +1,71 @@
+<div class="table-container">
+  <div class="actions">
+    <button class="btn-add" (click)="goToAdd()">+ Agregar Producto</button>
+
+    <!-- Campo de búsqueda -->
+    <input
+      type="text"
+      [(ngModel)]="searchTerm"
+      (input)="onSearchTermChange()"
+      placeholder="Buscar productos..."
+      class="search-input"
+    />
+
+    <!-- Selector de cantidad de registros -->
+    <select [(ngModel)]="itemsPerPage" (change)="onItemsPerPageChange()" class="items-per-page-select">
+      <option value="5">5 Registros</option>
+      <option value="10">10 Registros</option>
+      <option value="20">20 Registros</option>
+    </select>
+  </div>
+
+  <h2 class="title">Productos Registrados</h2>
+
+  <!-- Mensaje si no hay productos encontrados -->
+  <div *ngIf="filteredProducts.length === 0" class="info-flag">
+    No se encontraron productos con los criterios de búsqueda.
+  </div>
+
+  <div class="table-wrapper">
+    <table aria-label="Tabla de productos registrados">
+      <thead>
+        <tr>
+          <th>Logo</th>
+          <th>ID</th>
+          <th>Nombre del producto</th>
+          <th>Descripción</th>
+          <th>Fecha de Liberación</th>
+          <th>Fecha de Revisión</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let product of paginatedProducts">
+          <td><img [src]="product.logo" alt="Logo del producto" width="50" /></td>
+          <td>{{ product.id }}</td>
+          <td>{{ product.nombre }}</td>
+          <td>{{ product.descripcion }}</td>
+          <td>{{ product.fechaLiberacion | date: 'dd/MM/yyyy' }}</td>
+          <td>{{ product.fechaRevision | date: 'dd/MM/yyyy' }}</td>
+          <td>
+            <button class="btn-edit" (click)="goToEdit(product.id)" aria-label="Editar producto">
+              ✏️ Editar
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Paginación -->
+  <div class="pagination">
+    <button
+      *ngFor="let page of [].constructor(totalPages); let i = index"
+      [class.active]="i + 1 === currentPage"
+      (click)="changePage(i + 1)"
+      class="pagination-button"
+    >
+      {{ i + 1 }}
+    </button>
+  </div>
+</div>

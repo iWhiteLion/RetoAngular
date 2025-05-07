@@ -1,0 +1,67 @@
+<div class="form-wrapper">
+  <form [formGroup]="productForm" (ngSubmit)="onSubmit()" class="styled-form">
+    <h2>¡Registra tu producto!</h2>
+
+    <div class="form-grid">
+      <!-- ID -->
+      <label>ID</label>
+      <input formControlName="id" placeholder="Ej. 001" />
+      <div *ngIf="productForm.get('id')?.touched && productForm.get('id')?.invalid" class="error">
+        <small *ngIf="productForm.get('id')?.errors?.['required']">ID requerido.</small>
+        <small *ngIf="productForm.get('id')?.errors?.['minlength']">Mínimo 3 caracteres.</small>
+        <small *ngIf="productForm.get('id')?.errors?.['maxlength']">Máximo 10 caracteres.</small>
+        <small *ngIf="productForm.get('id')?.errors?.['idTaken']">Este ID ya está en uso.</small>
+      </div>
+
+      <!-- Nombre -->
+      <label>Nombre del Producto</label>
+      <input formControlName="nombre" placeholder="Ej. Zapatos deportivos" />
+      <div *ngIf="productForm.get('nombre')?.touched && productForm.get('nombre')?.invalid" class="error">
+        <small *ngIf="productForm.get('nombre')?.errors?.['required']">Nombre requerido.</small>
+        <small *ngIf="productForm.get('nombre')?.errors?.['minlength']">Mínimo 5 caracteres.</small>
+        <small *ngIf="productForm.get('nombre')?.errors?.['maxlength']">Máximo 100 caracteres.</small>
+      </div>
+
+      <!-- Descripción -->
+      <label>Descripción</label>
+      <input formControlName="descripcion" placeholder="Ej. Producto nuevo, talla 42" />
+      <div *ngIf="productForm.get('descripcion')?.touched && productForm.get('descripcion')?.invalid" class="error">
+        <small *ngIf="productForm.get('descripcion')?.errors?.['required']">Descripción requerida.</small>
+        <small *ngIf="productForm.get('descripcion')?.errors?.['minlength']">Mínimo 10 caracteres.</small>
+        <small *ngIf="productForm.get('descripcion')?.errors?.['maxlength']">Máximo 200 caracteres.</small>
+      </div>
+
+      <!-- Logo -->
+      <label>Logo (URL)</label>
+      <input formControlName="logo" placeholder="https://..." />
+      <div *ngIf="productForm.get('logo')?.touched && productForm.get('logo')?.invalid" class="error">
+        <small *ngIf="productForm.get('logo')?.errors?.['required']">Logo requerido.</small>
+      </div>
+
+      <!-- Fecha de Liberación -->
+      <label>Fecha de Liberación</label>
+      <input type="date" formControlName="fechaLiberacion" />
+      <div *ngIf="productForm.get('fechaLiberacion')?.touched && productForm.get('fechaLiberacion')?.invalid" class="error">
+        <small *ngIf="productForm.get('fechaLiberacion')?.errors?.['required']">Fecha de liberación requerida.</small>
+        <small *ngIf="productForm.get('fechaLiberacion')?.errors?.['fechaInvalida']">
+          La fecha debe ser igual o mayor a hoy.
+        </small>
+      </div>
+
+      <!-- Fecha de Revisión -->
+      <label>Fecha de Revisión</label>
+      <input type="date" formControlName="fechaRevision" />
+      <div *ngIf="productForm.get('fechaRevision')?.touched && productForm.get('fechaRevision')?.invalid" class="error">
+        <small *ngIf="productForm.get('fechaRevision')?.errors?.['required']">Fecha de revisión requerida.</small>
+        <small *ngIf="productForm.get('fechaRevision')?.errors?.['revisionIncorrecta']">
+          Debe ser exactamente un año después de la fecha de liberación.
+        </small>
+      </div>
+    </div>
+
+    <div class="buttons">
+      <button type="button" (click)="onReset()">Reiniciar</button>
+      <button type="submit" [disabled]="!productForm.valid">Agregar</button>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,8 @@
+.icon {
+    display: block;               
+    margin: 50px auto;            
+    width: 190px;                 
+    height: auto;                 
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0)); 
+    
+}
