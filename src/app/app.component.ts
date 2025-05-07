@@ -8,4 +8,6 @@ import { CommonModule } from '@angular/common';
   templateUrl: './app.component.html',
   imports: [RouterOutlet, CommonModule],
 })
-export class AppComponent {}
+export class AppComponent {
+  title = 'Reto_Angular'
+}

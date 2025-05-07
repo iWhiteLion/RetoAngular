@@ -12,7 +12,7 @@ import { FormsModule } from '@angular/forms';
   selector: 'app-product-table',
   templateUrl: './product-table.component.html',
   styleUrls: ['./product-table.component.css'],
-  imports: [CommonModule, RouterModule, HeaderComponent, FormsModule], // Agrega FormsModule aquí
+  imports: [CommonModule, RouterModule, HeaderComponent, FormsModule],
 })
 export class ProductTableComponent implements OnInit {
   private productService = inject(ProductService);
@@ -21,7 +21,7 @@ export class ProductTableComponent implements OnInit {
   products$: Observable<Product[]> = this.productService.products$;
 
   searchTerm: string = '';
-  itemsPerPage: number = 5; // Valores posibles: 5, 10, 20
+  itemsPerPage: number = 5;
   currentPage: number = 1;
   filteredProducts: Product[] = [];
   paginatedProducts: Product[] = [];
@@ -78,7 +78,7 @@ export class ProductTableComponent implements OnInit {
 
 //Manejar el cambio de término de búsqueda
   onSearchTermChange(): void {
-    this.currentPage = 1; // Reiniciamos a la primera página al realizar una nueva búsqueda
+    this.currentPage = 1;
     this.filterProducts();
   }
 

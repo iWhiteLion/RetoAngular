@@ -1,51 +1,71 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable, of } from 'rxjs';
-import { delay } from 'rxjs/operators';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { Product } from '../models/product.model';
+import { ApiService } from '../api/api.service';
+import { map } from 'rxjs/operators';
 
-@Injectable({ providedIn: 'root' })
+@Injectable({
+  providedIn: 'root'
+})
 export class ProductService {
-  private _products = new BehaviorSubject<Product[]>([
-    // Productos simulados al iniciar
-    {
-      id: '1',
-      nombre: 'Producto Simulado 1',
-      descripcion: 'Descripción de producto 1',
-      logo: 'https://via.placeholder.com/50',
-      fechaLiberacion: new Date(),
-      fechaRevision: new Date()
-    },
-    {
-      id: '2',
-      nombre: 'Producto Simulado 2',
-      descripcion: 'Descripción de producto 2',
-      logo: 'https://via.placeholder.com/50',
-      fechaLiberacion: new Date(),
-      fechaRevision: new Date()
-    }
-  ]);
+  private productsSubject = new BehaviorSubject<Product[]>([]);
+  public products$ = this.productsSubject.asObservable();
 
-  products$ = this._products.asObservable();
+  constructor(private apiService: ApiService) {
+    this.loadProducts(); // Carga inicial
+  }
 
+  //Obtener el valor actual de productos
   get productsValue(): Product[] {
-    return this._products.getValue();
+    return this.productsSubject.value;
   }
 
-  addProduct(product: Product) {
-    const current = this._products.value;
-    this._products.next([...current, product]);
+  //Cargar todos los productos de la API
+  private loadProducts(): void {
+    this.apiService.getAll().subscribe((products: Product[]) => {
+      const parsed = products.map(p => this.parseProductDates(p));
+      this.productsSubject.next(parsed);
+    });
   }
 
-  updateProduct(updatedProduct: Product) {
-    const updatedProducts = this._products.value.map(product =>
-      product.id === updatedProduct.id ? updatedProduct : product
+  //Añadir producto a la API
+  addProduct(product: Product): void {
+    this.apiService.create(product).subscribe((p: Product) => {
+      const updated = [...this.productsValue, this.parseProductDates(p)];
+      this.productsSubject.next(updated);
+    });
+  }
+
+  //Actualizar producto
+  updateProduct(product: Product): void {
+    this.apiService.update(product).subscribe((p: Product) => {
+      const updated = this.productsValue.map(item =>
+        item.id === product.id ? this.parseProductDates(p) : item
+      );
+      this.productsSubject.next(updated);
+    });
+  }
+
+/*Eliminar producto
+  deleteProduct(id: string): void {
+    this.apiService.delete(id).subscribe(() => {
+      const updated = this.productsValue.filter(p => p.id !== id);
+      this.productsSubject.next(updated);
+    });
+  } */
+
+  // Obtener un producto por ID
+  getProductById(id: string): Observable<Product> {
+    return this.apiService.getById(id).pipe(
+      map((p: Product) => this.parseProductDates(p))
     );
-    this._products.next(updatedProducts);
   }
 
-  // Método simulado: buscar producto por id
-  getProductById(id: string): Observable<Product | undefined> {
-    const found = this.productsValue.find(p => p.id === id);
-    return of(found).pipe(delay(500)); // simula 500ms de "espera de servidor"
+  private parseProductDates(product: Product): Product {
+    return {
+      ...product,
+      fechaLiberacion: new Date(product.fechaLiberacion),
+      fechaRevision: new Date(product.fechaRevision)
+    };
   }
 }

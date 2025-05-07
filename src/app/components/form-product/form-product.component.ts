@@ -11,7 +11,6 @@ import {
 } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { ProductService } from '../../services/product.service';
-import { Product } from '../../models/product.model';
 import { map, of, delay } from 'rxjs';
 
 @Component({
@@ -87,7 +86,6 @@ export class FormProductComponent {
     };
   }
 
-  // Validador fechaLiberacion: debe ser hoy o posterior
   fechaLiberacionValidator(control: AbstractControl): ValidationErrors | null {
     const inputDate = new Date(control.value);
     const today = new Date();
@@ -98,7 +96,6 @@ export class FormProductComponent {
     return null;
   }
 
-  //  Validador fechaRevision: debe ser exactamente un año después
   fechaRevisionValidator(control: AbstractControl): ValidationErrors | null {
     const liberacionControl = this.productForm?.get('fechaLiberacion');
     if (!liberacionControl) return null;
