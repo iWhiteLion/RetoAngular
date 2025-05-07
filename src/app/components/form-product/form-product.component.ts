@@ -39,7 +39,12 @@ export class FormProductComponent {
       descripcion: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(200)]],
       logo: ['', Validators.required],
       fechaLiberacion: ['', [Validators.required, this.fechaLiberacionValidator]],
-      fechaRevision: ['', [Validators.required, this.fechaRevisionValidator.bind(this)]]
+      fechaRevision: [{ value: '', disabled: true }, [Validators.required, this.fechaRevisionValidator.bind(this)]]
+    });
+
+    // ✅ Escuchar cambios en fechaLiberacion
+    this.productForm.get('fechaLiberacion')?.valueChanges.subscribe(() => {
+      this.onFechaLiberacionChange();
     });
 
     this.route.params.subscribe(params => {
@@ -78,11 +83,10 @@ export class FormProductComponent {
       if (this.editingId === control.value) {
         return of(null); // permitimos que el mismo id del que edita pase
       }
-      return of(this.productService.productsValue.some(p => p.id === control.value))
-        .pipe(
-          delay(500), // simulamos delay
-          map(exists => (exists ? { idTaken: true } : null))
-        );
+      return of(this.productService.productsValue.some(p => p.id === control.value)).pipe(
+        delay(500), // simulamos delay
+        map(exists => (exists ? { idTaken: true } : null))
+      );
     };
   }
 
@@ -114,5 +118,14 @@ export class FormProductComponent {
     }
 
     return null;
+  }
+
+  onFechaLiberacionChange() {
+    const fechaLiberacion = this.productForm.get('fechaLiberacion')?.value;
+    if (fechaLiberacion) {
+      const fechaLiberacionDate = new Date(fechaLiberacion);
+      const fechaRevisionDate = new Date(fechaLiberacionDate.setFullYear(fechaLiberacionDate.getFullYear() + 1));
+      this.productForm.get('fechaRevision')?.setValue(fechaRevisionDate.toISOString().split('T')[0]);
+    }
   }
 }

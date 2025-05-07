@@ -13,7 +13,7 @@
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.05);
   width: 100%;
-  max-width: 500px;
+  max-width: 800px;
 }
 
 .styled-form h2 {
@@ -24,15 +24,20 @@
 }
 
 .form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 20px;
+}
+
+.form-item {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 6px;
 }
 
 .styled-form label {
   font-weight: 600;
   color: #002147;
-  margin-bottom: 4px;
 }
 
 .styled-form input {
@@ -46,4 +51,40 @@
   display: flex;
   justify-content: space-between;
   margin-top: 30px;
+}
+
+.buttons button {
+  padding: 12px 24px;
+  font-size: 16px;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  transition: background-color 0.3s ease;
+}
+
+/* Botón de reinicio */
+.buttons button[type="button"] {
+  background-color: #e0e0e0;
+  color: #333;
+}
+
+.buttons button[type="button"]:hover {
+  background-color: #c0c0c0;
+}
+
+
+.buttons button[type="submit"] {
+  background-color: #ffcc00;
+  color: #002147;
+}
+
+.buttons button[type="submit"]:hover {
+  background-color: #ffcc00;
+}
+
+.error small {
+  color: red;
+  font-size: 1em;
+  font-family: Arial;
 }

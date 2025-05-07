@@ -36,7 +36,7 @@
       "id": "22",
       "nombre": "Tarjeta Sin Información",
       "logo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTwU3o7jto4AuefTaPcqv3dQzJyPTuBFu7YXQ&s",
-      "descripcion": "si",
+      "descripcion": "NA",
       "fechaLiberacion": "2025-01-01",
       "fechaRevision": "2025-02-01"
     },
@@ -44,7 +44,7 @@
       "id": "222",
       "nombre": "Tarjeta Vacía",
       "logo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTwU3o7jto4AuefTaPcqv3dQzJyPTuBFu7YXQ&s",
-      "descripcion": "si",
+      "descripcion": "NA",
       "fechaLiberacion": "2025-02-01",
       "fechaRevision": "2025-03-01"
     },
@@ -52,9 +52,16 @@
       "id": "111",
       "nombre": "Tarjeta Sin Detalles",
       "logo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTwU3o7jto4AuefTaPcqv3dQzJyPTuBFu7YXQ&s",
-      "descripcion": "si",
+      "descripcion": "NA",
       "fechaLiberacion": "2025-03-01",
       "fechaRevision": "2025-04-01"
+    },
+    {
+      "id": "355",
+      "nombre": "Tarjeta Platinum",
+      "descripcion": "Beneficios premium y puntos doble",
+      "logo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSxAl7FrR65oPVo1AvdqTRVBFXoCnK85LRLpA&s",
+      "fechaLiberacion": "2025-05-16"
     }
   ]
 }

@@ -20,15 +20,17 @@ export class ProductTableComponent implements OnInit {
 
   products$: Observable<Product[]> = this.productService.products$;
 
-  searchTerm: string = '';
-  itemsPerPage: number = 5;
-  currentPage: number = 1;
+  allProducts: Product[] = []; //Lista original 
   filteredProducts: Product[] = [];
   paginatedProducts: Product[] = [];
 
+  searchTerm: string = '';
+  itemsPerPage: number = 5;
+  currentPage: number = 1;
+
   flag: boolean = true;
 
-//Agregar producto
+  //Agregar producto
   goToAdd() {
     this.router.navigate(['/crear']);
   }
@@ -40,49 +42,54 @@ export class ProductTableComponent implements OnInit {
 
   ngOnInit(): void {
     this.products$.subscribe(products => {
+      this.allProducts = products; //Guardar todos los productos
       this.filteredProducts = products;
       this.paginateProducts();
     });
   }
-//Filtrar productos
+
+  //Filtrar productos
   filterProducts(): void {
     const term = this.searchTerm.toLowerCase().trim();
 
-//Filtra con nombre, descripción o productos
-      this.filteredProducts = this.filteredProducts.filter((product: Product) =>
-      product.nombre.toLowerCase().includes(term) ||
-      product.descripcion.toLowerCase().includes(term) ||
-      product.id.toLowerCase().includes(term)
-    );
+    if (term === '') {
+      this.filteredProducts = this.allProducts; 
+    } else {
+      this.filteredProducts = this.allProducts.filter((product: Product) =>
+        product.nombre.toLowerCase().includes(term) ||
+        product.descripcion.toLowerCase().includes(term) ||
+        product.id.toLowerCase().includes(term)
+      );
+    }
 
-//Paginación después de filtrar
-    this.paginateProducts();
+    this.paginateProducts(); 
   }
-//Pagina los productos según la cantidad de registros por página
+
+  //Pagina los productos según la cantidad de registros por página
   paginateProducts(): void {
     const startIndex = (this.currentPage - 1) * this.itemsPerPage;
     this.paginatedProducts = this.filteredProducts.slice(startIndex, startIndex + this.itemsPerPage);
   }
 
-//Cambia la cantidad de productos mostrados por página
+  //Cambia la cantidad de productos mostrados por página
   onItemsPerPageChange(): void {
-    this.currentPage = 1; //
+    this.currentPage = 1;
     this.paginateProducts();
   }
 
-//Cambiar la página actual
+  //Cambiar la página actual
   changePage(page: number): void {
     this.currentPage = page;
     this.paginateProducts();
   }
 
-//Manejar el cambio de término de búsqueda
+  //Manejar el cambio de término de búsqueda
   onSearchTermChange(): void {
     this.currentPage = 1;
-    this.filterProducts();
+    this.filterProducts(); 
   }
 
-//N total de páginas
+  //N total de páginas
   get totalPages(): number {
     return Math.ceil(this.filteredProducts.length / this.itemsPerPage);
   }
