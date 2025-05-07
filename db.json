@@ -1,0 +1,60 @@
+{
+  "products": [
+    {
+      "id": "101",
+      "nombre": "Tarjeta Platinum",
+      "logo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSe7yaovkrsblwqPwwT1hc5BiLMFLu5fDNoSw&s",
+      "descripcion": "Beneficios premium y puntos dobles",
+      "fechaLiberacion": "2025-03-01",
+      "fechaRevision": "2025-04-01"
+    },
+    {
+      "id": "102",
+      "nombre": "Tarjeta Virtual",
+      "logo": "https://cdn-icons-png.flaticon.com/512/2920/2920277.png",
+      "descripcion": "Ideal para compras online",
+      "fechaLiberacion": "2024-12-15",
+      "fechaRevision": "2025-02-10"
+    },
+    {
+      "id": "103",
+      "nombre": "Tarjeta Business",
+      "logo": "https://cdn-icons-png.flaticon.com/512/82/82213.png",
+      "descripcion": "Control de gastos corporativos",
+      "fechaLiberacion": "2025-01-10",
+      "fechaRevision": "2025-03-20"
+    },
+    {
+      "id": "104",
+      "nombre": "Tarjeta Joven",
+      "logo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTwU3o7jto4AuefTaPcqv3dQzJyPTuBFu7YXQ&s",
+      "descripcion": "Diseñada para estudiantes",
+      "fechaLiberacion": "2025-02-05",
+      "fechaRevision": "2025-05-01"
+    },
+    {
+      "id": "22",
+      "nombre": "Tarjeta Sin Información",
+      "logo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTwU3o7jto4AuefTaPcqv3dQzJyPTuBFu7YXQ&s",
+      "descripcion": "si",
+      "fechaLiberacion": "2025-01-01",
+      "fechaRevision": "2025-02-01"
+    },
+    {
+      "id": "222",
+      "nombre": "Tarjeta Vacía",
+      "logo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTwU3o7jto4AuefTaPcqv3dQzJyPTuBFu7YXQ&s",
+      "descripcion": "si",
+      "fechaLiberacion": "2025-02-01",
+      "fechaRevision": "2025-03-01"
+    },
+    {
+      "id": "111",
+      "nombre": "Tarjeta Sin Detalles",
+      "logo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTwU3o7jto4AuefTaPcqv3dQzJyPTuBFu7YXQ&s",
+      "descripcion": "si",
+      "fechaLiberacion": "2025-03-01",
+      "fechaRevision": "2025-04-01"
+    }
+  ]
+}
