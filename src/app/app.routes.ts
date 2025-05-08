@@ -1,11 +1,11 @@
 import { Routes } from '@angular/router';
-import { DetailComponent } from './pages/detail/detail.component';
-import { ProductComponent } from './pages/product/product.component';
+import { FormProductComponent } from './components/form-product/form-product.component';
+import { ProductTableComponent } from './components/product-table/product-table.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'lista', pathMatch: 'full' },
-  { path: 'lista', component: ProductComponent },
-  { path: 'crear', component: DetailComponent },
-  { path: 'editar/:id', component: DetailComponent },
+  { path: 'lista', component: ProductTableComponent },
+  { path: 'crear', component: FormProductComponent },
+  { path: 'editar/:id', component: FormProductComponent },
   { path: '**', redirectTo: 'lista' },
 ];

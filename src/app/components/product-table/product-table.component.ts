@@ -45,7 +45,7 @@ export class ProductTableComponent implements OnInit {
       {
         id: '001',
         nombre: 'Tarjeta Platinum',
-        descripcion: 'Tarjeta de crédito con beneficios premium',
+        descripcion: 'Datos Simulados',
         logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/Banco_Pichincha_logo.svg/2560px-Banco_Pichincha_logo.svg.png',
         fechaLiberacion: new Date('2024-01-15'),
         fechaRevision: new Date('2025-01-15'),
@@ -53,7 +53,7 @@ export class ProductTableComponent implements OnInit {
       {
         id: '002',
         nombre: 'Cuenta Ahorros Kids',
-        descripcion: 'Cuenta de ahorros para niños menores de 12 años',
+        descripcion: 'Datos Simulados',
         logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/Banco_Pichincha_logo.svg/2560px-Banco_Pichincha_logo.svg.png',
         fechaLiberacion: new Date('2023-06-10'),
         fechaRevision: new Date('2024-06-10'),

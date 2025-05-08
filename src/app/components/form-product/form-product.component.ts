@@ -42,7 +42,6 @@ export class FormProductComponent {
       fechaRevision: [{ value: '', disabled: true }, [Validators.required, this.fechaRevisionValidator.bind(this)]]
     });
 
-    // ✅ Escuchar cambios en fechaLiberacion
     this.productForm.get('fechaLiberacion')?.valueChanges.subscribe(() => {
       this.onFechaLiberacionChange();
     });
@@ -65,11 +64,14 @@ export class FormProductComponent {
 
   onSubmit() {
     if (this.productForm.valid) {
+      const productData = this.productForm.getRawValue(); // ✅ Incluye campos deshabilitados
+
       if (this.editingId) {
-        this.productService.updateProduct(this.productForm.value);
+        this.productService.updateProduct(productData);
       } else {
-        this.productService.addProduct(this.productForm.value);
+        this.productService.addProduct(productData);
       }
+
       this.productForm.reset();
     }
   }

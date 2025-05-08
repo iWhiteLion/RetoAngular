@@ -36,7 +36,7 @@ export class ProductService {
     });
   }
 
-  //Actualizar producto
+//Actualizar producto
   updateProduct(product: Product): void {
     this.apiService.update(product).subscribe((p: Product) => {
       const updated = this.productsValue.map(item =>
@@ -45,6 +45,7 @@ export class ProductService {
       this.productsSubject.next(updated);
     });
   }
+
 
 /*Eliminar producto
   deleteProduct(id: string): void {

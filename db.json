@@ -55,13 +55,6 @@
       "descripcion": "NA",
       "fechaLiberacion": "2025-03-01",
       "fechaRevision": "2025-04-01"
-    },
-    {
-      "id": "355",
-      "nombre": "Tarjeta Platinum",
-      "descripcion": "Beneficios premium y puntos doble",
-      "logo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSxAl7FrR65oPVo1AvdqTRVBFXoCnK85LRLpA&s",
-      "fechaLiberacion": "2025-05-16"
     }
   ]
 }

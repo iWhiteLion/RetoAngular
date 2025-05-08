@@ -36,7 +36,6 @@
           <th>Descripción</th>
           <th>Fecha de Liberación</th>
           <th>Fecha de Revisión</th>
-          <th>Acciones</th>
         </tr>
       </thead>
       <tbody>
@@ -48,9 +47,6 @@
           <td>{{ product.fechaLiberacion | date: 'dd/MM/yyyy' }}</td>
           <td>{{ product.fechaRevision | date: 'dd/MM/yyyy' }}</td>
           <td>
-            <button class="btn-edit" (click)="goToEdit(product.id)" aria-label="Editar producto">
-              ✏️ Editar
-            </button>
           </td>
         </tr>
       </tbody>
