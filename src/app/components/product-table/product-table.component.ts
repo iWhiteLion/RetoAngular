@@ -41,12 +41,32 @@ export class ProductTableComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.products$.subscribe(products => {
-      this.allProducts = products; //Guardar todos los productos
-      this.filteredProducts = products;
+    const hardcodedProducts: Product[] = [
+      {
+        id: '001',
+        nombre: 'Tarjeta Platinum',
+        descripcion: 'Tarjeta de crédito con beneficios premium',
+        logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/Banco_Pichincha_logo.svg/2560px-Banco_Pichincha_logo.svg.png',
+        fechaLiberacion: new Date('2024-01-15'),
+        fechaRevision: new Date('2025-01-15'),
+      },
+      {
+        id: '002',
+        nombre: 'Cuenta Ahorros Kids',
+        descripcion: 'Cuenta de ahorros para niños menores de 12 años',
+        logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/Banco_Pichincha_logo.svg/2560px-Banco_Pichincha_logo.svg.png',
+        fechaLiberacion: new Date('2023-06-10'),
+        fechaRevision: new Date('2024-06-10'),
+      }
+    ];
+  
+    this.products$.subscribe(apiProducts => {
+      this.allProducts = [...hardcodedProducts, ...apiProducts]; // Combina ambos
+      this.filteredProducts = this.allProducts;
       this.paginateProducts();
     });
   }
+  
 
   //Filtrar productos
   filterProducts(): void {
