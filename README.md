@@ -1,7 +1,10 @@
 <<<<<<< HEAD
 # Reto_Angular
 =======
-# NombreDelProyecto
+# Reto Angular
+
+Reto realizado en base al Seniority de Junior "Generar una aplicación frontend para cumplir las funcionalidades: F1, F2, F3, no es mandatorio funcionalidades: F4, F5, F6."
+Con un agregado de la funcionalidad F4 con sus respectivas validaciones.
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.0.7.
 
