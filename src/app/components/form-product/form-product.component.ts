@@ -64,7 +64,7 @@ export class FormProductComponent {
 
   onSubmit() {
     if (this.productForm.valid) {
-      const productData = this.productForm.getRawValue(); // ✅ Incluye campos deshabilitados
+      const productData = this.productForm.getRawValue(); // Incluye campos deshabilitados
 
       if (this.editingId) {
         this.productService.updateProduct(productData);

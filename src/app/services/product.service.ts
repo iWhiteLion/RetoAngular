@@ -12,7 +12,7 @@ export class ProductService {
   public products$ = this.productsSubject.asObservable();
 
   constructor(private apiService: ApiService) {
-    this.loadProducts(); // Carga inicial
+    this.loadProducts(); //Carga inicial
   }
 
   //Obtener el valor actual de productos
