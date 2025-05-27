@@ -59,21 +59,21 @@ export class ProductTableComponent implements OnInit {
         fechaRevision: new Date('2024-06-10'),
       }
     ];
-  
+
     this.products$.subscribe(apiProducts => {
       this.allProducts = [...hardcodedProducts, ...apiProducts]; // Combina ambos
       this.filteredProducts = this.allProducts;
       this.paginateProducts();
     });
   }
-  
+
 
   //Filtrar productos
   filterProducts(): void {
     const term = this.searchTerm.toLowerCase().trim();
 
     if (term === '') {
-      this.filteredProducts = this.allProducts; 
+      this.filteredProducts = this.allProducts;
     } else {
       this.filteredProducts = this.allProducts.filter((product: Product) =>
         product.nombre.toLowerCase().includes(term) ||
@@ -82,7 +82,7 @@ export class ProductTableComponent implements OnInit {
       );
     }
 
-    this.paginateProducts(); 
+    this.paginateProducts();
   }
 
   //Pagina los productos según la cantidad de registros por página
@@ -106,7 +106,7 @@ export class ProductTableComponent implements OnInit {
   //Manejar el cambio de término de búsqueda
   onSearchTermChange(): void {
     this.currentPage = 1;
-    this.filterProducts(); 
+    this.filterProducts();
   }
 
   //N total de páginas

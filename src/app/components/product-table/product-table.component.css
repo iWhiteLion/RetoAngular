@@ -1,12 +1,12 @@
 .table-container {
-  margin: 40px auto; 
+  margin: 40px auto;
   padding: 40px;
   background-color: #ffffff;
   border-radius: 16px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
   max-width: 1200px;
   min-width: 900px;
-  overflow: auto; 
+  overflow: auto;
 }
 
 
@@ -18,7 +18,7 @@
 }
 
 .btn-add {
-  background-color: #ffcc00; 
+  background-color: #ffcc00;
   color: #000;
   font-weight: 600;
   border: none;
@@ -78,7 +78,7 @@ table {
 }
 
 thead {
-  background-color: #f0f4f8;
+  background-color: #ffffff;
 }
 
 th,

@@ -62,23 +62,34 @@ export class FormProductComponent {
     }
   }
 
+  submitted = false;
+
   onSubmit() {
-    if (this.productForm.valid) {
-      const productData = this.productForm.getRawValue(); // Incluye campos deshabilitados
+    this.submitted = true;
 
-      if (this.editingId) {
-        this.productService.updateProduct(productData);
-      } else {
-        this.productService.addProduct(productData);
-      }
-
-      this.productForm.reset();
+    if (this.productForm.invalid) {
+      this.productForm.markAllAsTouched(); // Muestra los errores campo por campo
+      return;
     }
+
+    const productData = this.productForm.getRawValue();
+
+    if (this.editingId) {
+      this.productService.updateProduct(productData);
+    } else {
+      this.productService.addProduct(productData);
+    }
+
+    this.productForm.reset();
+    this.submitted = false;
   }
+
 
   onReset() {
     this.productForm.reset();
+    this.submitted = false;
   }
+
 
   idNotTakenValidator(): AsyncValidatorFn {
     return (control: AbstractControl) => {

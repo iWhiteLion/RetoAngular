@@ -1,11 +1,14 @@
 <div class="form-wrapper">
   <form [formGroup]="productForm" (ngSubmit)="onSubmit()" class="styled-form">
     <h2>Formulario de Registro</h2>
+    <div *ngIf="submitted && productForm.invalid" class="error general-error">
+      <p>Por favor, llene todos los campos necesarios correctamente.</p>
+    </div>
 
     <div class="form-grid">
       <!-- ID y Nombre -->
       <div class="form-item">
-        <label for="id">ID</label>
+        <label for="id">ID <span class="required-asterisk">*</span></label>
         <input id="id" formControlName="id" placeholder="Ej. 001" />
         <div *ngIf="productForm.get('id')?.touched && productForm.get('id')?.invalid" class="error">
           <small *ngIf="productForm.get('id')?.errors?.['required']">ID requerido.</small>
@@ -16,7 +19,7 @@
       </div>
 
       <div class="form-item">
-        <label for="nombre">Nombre del Producto</label>
+        <label for="nombre">Nombre del Producto <span class="required-asterisk">*</span></label>
         <input id="nombre" formControlName="nombre" placeholder="Ej. Zapatos deportivos" />
         <div *ngIf="productForm.get('nombre')?.touched && productForm.get('nombre')?.invalid" class="error">
           <small *ngIf="productForm.get('nombre')?.errors?.['required']">Nombre requerido.</small>
@@ -27,8 +30,8 @@
 
       <!-- Descripción y Logo -->
       <div class="form-item">
-        <label for="descripcion">Descripción</label>
-        <input id="descripcion" formControlName="descripcion" placeholder="Ej. Producto nuevo, talla 42" />
+        <label for="descripcion">Descripción <span class="required-asterisk">*</span></label>
+        <input id="descripcion" formControlName="descripcion" placeholder="Ej. Tarjeta Débito Jovenes" />
         <div *ngIf="productForm.get('descripcion')?.touched && productForm.get('descripcion')?.invalid" class="error">
           <small *ngIf="productForm.get('descripcion')?.errors?.['required']">Descripción requerida.</small>
           <small *ngIf="productForm.get('descripcion')?.errors?.['minlength']">Mínimo 10 caracteres.</small>
@@ -37,7 +40,7 @@
       </div>
 
       <div class="form-item">
-        <label for="logo">Logo (URL)</label>
+        <label for="logo">Logo (URL) <span class="required-asterisk">*</span></label>
         <input id="logo" formControlName="logo" placeholder="https://..." />
         <div *ngIf="productForm.get('logo')?.touched && productForm.get('logo')?.invalid" class="error">
           <small *ngIf="productForm.get('logo')?.errors?.['required']">Logo requerido.</small>
@@ -46,27 +49,34 @@
 
       <!-- Fecha de Liberación y Fecha de Revisión -->
       <div class="form-item">
-        <label for="fechaLiberacion">Fecha de Liberación</label>
+        <label for="fechaLiberacion">Fecha de Liberación<span class="required-asterisk">*</span></label>
         <input type="date" id="fechaLiberacion" formControlName="fechaLiberacion" />
-        <div *ngIf="productForm.get('fechaLiberacion')?.touched && productForm.get('fechaLiberacion')?.invalid" class="error">
+        <div *ngIf="productForm.get('fechaLiberacion')?.touched && productForm.get('fechaLiberacion')?.invalid"
+          class="error">
           <small *ngIf="productForm.get('fechaLiberacion')?.errors?.['required']">Fecha de liberación requerida.</small>
-          <small *ngIf="productForm.get('fechaLiberacion')?.errors?.['fechaInvalida']">La fecha debe ser igual o mayor a hoy.</small>
+          <small *ngIf="productForm.get('fechaLiberacion')?.errors?.['fechaInvalida']">La fecha debe ser igual o mayor a
+            hoy.</small>
         </div>
       </div>
 
       <div class="form-item">
-        <label for="fechaRevision">Fecha de Revisión</label>
+        <label for="fechaRevision">Fecha de Revisión <span class="required-asterisk">*</span></label>
+
         <input type="date" id="fechaRevision" formControlName="fechaRevision" />
-        <div *ngIf="productForm.get('fechaRevision')?.touched && productForm.get('fechaRevision')?.invalid" class="error">
+        <div *ngIf="productForm.get('fechaRevision')?.touched && productForm.get('fechaRevision')?.invalid"
+          class="error">
           <small *ngIf="productForm.get('fechaRevision')?.errors?.['required']">Fecha de revisión requerida.</small>
-          <small *ngIf="productForm.get('fechaRevision')?.errors?.['revisionIncorrecta']">Debe ser exactamente un año después de la fecha de liberación.</small>
+          <small *ngIf="productForm.get('fechaRevision')?.errors?.['revisionIncorrecta']">Debe ser exactamente un año
+            después de la fecha de liberación.</small>
         </div>
       </div>
     </div>
 
     <div class="buttons">
       <button type="button" (click)="onReset()">Reiniciar</button>
-      <button type="submit" [disabled]="!productForm.valid">Agregar</button>
+      <button type="submit">Agregar</button>
+
     </div>
   </form>
+
 </div>

@@ -2,16 +2,11 @@
   <div class="actions">
     <button class="btn-add" (click)="goToAdd()">+ Agregar Producto</button>
 
-<!-- Campo de búsqueda -->
-    <input
-      type="text"
-      [(ngModel)]="searchTerm"
-      (input)="onSearchTermChange()"
-      placeholder="Buscar productos..."
-      class="search-input"
-    />
+    <!-- Campo de búsqueda -->
+    <input type="text" [(ngModel)]="searchTerm" (input)="onSearchTermChange()" placeholder="Buscar productos..."
+      class="search-input" />
 
-<!-- Selector de cantidad de registros -->
+    <!-- Selector de cantidad de registros -->
     <select [(ngModel)]="itemsPerPage" (change)="onItemsPerPageChange()" class="items-per-page-select">
       <option value="5">5 Registros</option>
       <option value="10">10 Registros</option>
@@ -21,7 +16,7 @@
 
   <h2 class="title">Productos Registrados</h2>
 
-<!-- Mensaje si no hay productos encontrados -->
+  <!-- Mensaje si no hay productos encontrados -->
   <div *ngIf="filteredProducts.length === 0" class="info-flag">
     No se encontraron productos con los criterios de búsqueda.
   </div>
@@ -52,14 +47,10 @@
       </tbody>
     </table>
   </div>
-<!-- Paginación -->
+  <!-- Paginación -->
   <div class="pagination">
-    <button
-      *ngFor="let page of [].constructor(totalPages); let i = index"
-      [class.active]="i + 1 === currentPage"
-      (click)="changePage(i + 1)"
-      class="pagination-button"
-    >
+    <button *ngFor="let page of [].constructor(totalPages); let i = index" [class.active]="i + 1 === currentPage"
+      (click)="changePage(i + 1)" class="pagination-button">
       {{ i + 1 }}
     </button>
   </div>

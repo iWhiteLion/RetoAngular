@@ -11,7 +11,7 @@
   background-color: white;
   padding: 30px 40px;
   border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
   width: 100%;
   max-width: 800px;
 }
@@ -87,4 +87,18 @@
   color: red;
   font-size: 1em;
   font-family: Arial;
+}
+
+.general-error {
+  background-color: #f8d7da;
+  color: #721c24;
+  padding: 7px;
+  margin: 7px 0;
+  border: 1px solid #f5c6cb;
+  border-radius: 4px;
+  font-weight: bold;
+}
+
+.required-asterisk {
+  color: red;
 }
