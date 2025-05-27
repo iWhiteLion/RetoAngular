@@ -6,6 +6,66 @@
 Reto realizado en base al Seniority de Junior "Generar una aplicación frontend para cumplir las funcionalidades: F1, F2, F3, no es mandatorio funcionalidades: F4, F5, F6."
 Con un agregado de la funcionalidad F4 con sus respectivas validaciones.
 
+# Funcionalidades
+
+# F1. Listado de productos financieros: 
+  Se requiere una aplicación para visualizar los diferentes productos financieros ofertados por la Institución Banco Pichincha cargados de una API. Realizar la maquetación en base al diseño D1.
+
+# F2. búsqueda de productos financieros:
+  Se requiere realizar búsqueda de los productos financieros mediante un campo de texto. Realizar la maquetación en base al diseño D1.
+
+# F3. Cantidad de registros:
+ Se requiere que se muestre la cantidad de resultados mostrados en el listado y un select que permita seleccionar la cantidad de registros a mostrar debe contener los siguientes valores: 5, 10 y 20. Realizar la maquetación en base al diseño D1.
+
+# F4. Agregar producto:
+  Se requiere la implementación un botón de “Agregar” para navegar al formulario de registro, el formulario debe permitir la creación de un producto mediante un botón “Agregar” y debe permitir la limpieza del formulario      mediante un botón de “Reiniciar”. Realizar la maquetación del formulario base al diseño D2 y de la ubicación del botón principal en base a diseño D3
+
+# Estructura del proyecto
+```
+└─src
+  │   index.html
+  │   main.ts
+  │   styles.css
+  │
+  └───app
+      │   app.component.css
+      │   app.component.html
+      │   app.component.spec.ts
+      │   app.component.ts
+      │   app.config.ts
+      │   app.routes.ts
+      │
+      ├───api
+      │       api.service.ts
+      │
+      ├───components
+      │   ├───form-product
+      │   │       form-product.component.css
+      │   │       form-product.component.html        
+      │   │       form-product.component.spec.ts     
+      │   │       form-product.component.ts
+      │   │
+      │   ├───header
+      │   │       header.component.css
+      │   │       header.component.html
+      │   │       header.component.spec.ts
+      │   │       header.component.ts
+      │   │
+      │   └───product-table
+      │           product-table.component.css        
+      │           product-table.component.html       
+      │           product-table.component.spec.ts    
+      │           product-table.component.ts
+      │
+      ├───models
+      │       product.model.ts
+      │
+      ├───pages
+      └───services
+              product.service.spec.ts
+              product.service.ts
+```
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.0.7.
 
 ## Development server
